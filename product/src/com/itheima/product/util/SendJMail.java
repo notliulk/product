@@ -1,4 +1,4 @@
-package com.itheima.product.util;
+package cn.onloc.FirstMaven;
 
 import java.util.Properties;
 
@@ -13,38 +13,38 @@ public class SendJMail {
 	
 		public static boolean sendMail(String email, String emailMsg) {
 		
-		String from = "ma_chun-yu@163.com"; 				// ÓÊ¼ş·¢ËÍÈËµÄÓÊ¼şµØÖ·
-		String to = email; 										// ÓÊ¼ş½ÓÊÕÈËµÄÓÊ¼şµØÖ·
-		final String username = "ma_chun-yu@163.com";  	//·¢¼şÈËµÄÓÊ¼şÕÊ»§
-		final String password = "12345678";   					//·¢¼şÈËµÄÓÊ¼şÃÜÂë
+		String from = "17782271150@163.com"; 				// é‚®ä»¶å‘é€äººçš„é‚®ä»¶åœ°å€
+		String to = email; 										// é‚®ä»¶æ¥æ”¶äººçš„é‚®ä»¶åœ°å€
+		final String username = "17782271150";  	//å‘ä»¶äººçš„é‚®ä»¶å¸æˆ·
+		final String password = "982155420welk";   					//å‘ä»¶äººçš„é‚®ä»¶å¯†ç 
 
 
-		//¶¨ÒåProperties¶ÔÏó,ÉèÖÃ»·¾³ĞÅÏ¢
+		//å®šä¹‰Propertieså¯¹è±¡,è®¾ç½®ç¯å¢ƒä¿¡æ¯
 		Properties props = new Properties();
 
-		//ÉèÖÃÓÊ¼ş·şÎñÆ÷µÄµØÖ·
-		props.setProperty("mail.transport.protocol", "smtp");//ÉèÖÃ·¢ËÍÓÊ¼şÊ¹ÓÃµÄĞ­Òé
-		props.setProperty("mail.smtp.host", "smtp.163.com"); // Ö¸¶¨µÄsmtp·şÎñÆ÷
+		//è®¾ç½®é‚®ä»¶æœåŠ¡å™¨çš„åœ°å€
+		props.setProperty("mail.transport.protocol", "smtp");//è®¾ç½®å‘é€é‚®ä»¶ä½¿ç”¨çš„åè®®
+		props.setProperty("mail.smtp.host", "smtp.163.com"); // æŒ‡å®šçš„smtpæœåŠ¡å™¨
 		props.setProperty("mail.smtp.auth", "true");
-		//´´½¨Session¶ÔÏó,session¶ÔÏó±íÊ¾Õû¸öÓÊ¼şµÄ»·¾³ĞÅÏ¢
+		//åˆ›å»ºSessionå¯¹è±¡,sessionå¯¹è±¡è¡¨ç¤ºæ•´ä¸ªé‚®ä»¶çš„ç¯å¢ƒä¿¡æ¯
 		Session session = Session.getInstance(props);
-		//ÉèÖÃÊä³öµ÷ÊÔĞÅÏ¢
+		//è®¾ç½®è¾“å‡ºè°ƒè¯•ä¿¡æ¯
 		session.setDebug(true);
 		try {
-			//MessageµÄÊµÀı¶ÔÏó±íÊ¾Ò»·âµç×ÓÓÊ¼ş
+			//Messageçš„å®ä¾‹å¯¹è±¡è¡¨ç¤ºä¸€å°ç”µå­é‚®ä»¶
 			MimeMessage message = new MimeMessage(session);
-			//ÉèÖÃ·¢¼şÈËµÄµØÖ·
+			//è®¾ç½®å‘ä»¶äººçš„åœ°å€
 			message.setFrom(new InternetAddress(from));
-			//ÉèÖÃÖ÷Ìâ
-			message.setSubject("ÓÃ»§¼¤»î");
-			//ÉèÖÃÓÊ¼şµÄÎÄ±¾ÄÚÈİ
+			//è®¾ç½®ä¸»é¢˜
+			message.setSubject("æµ‹è¯•é‚®ä»¶");
+			//è®¾ç½®é‚®ä»¶çš„æ–‡æœ¬å†…å®¹
 			//message.setText("Welcome to JavaMail World!");
-			message.setContent(emailMsg,"²âÊÔÓÊÏä");// 
-			//´ÓsessionµÄ»·¾³ÖĞ»ñÈ¡·¢ËÍÓÊ¼şµÄ¶ÔÏó
+			message.setContent(emailMsg,"text/html;charset=utf-8");// 
+			//ä»sessionçš„ç¯å¢ƒä¸­è·å–å‘é€é‚®ä»¶çš„å¯¹è±¡
 			Transport transport=session.getTransport();
-			//Á¬½ÓÓÊ¼ş·şÎñÆ÷
+			//è¿æ¥é‚®ä»¶æœåŠ¡å™¨
 			transport.connect("smtp.163.com",25, username, password);
-			//ÉèÖÃÊÕ¼şÈËµØÖ·,²¢·¢ËÍÏûÏ¢
+			//è®¾ç½®æ”¶ä»¶äººåœ°å€,å¹¶å‘é€æ¶ˆæ¯
 			transport.sendMessage(message,new Address[]{new InternetAddress(to)});
 			transport.close();
 			return true;
@@ -52,6 +52,10 @@ public class SendJMail {
 			e.printStackTrace();
 			return false;
 		}
+	}
+		
+	public static void main(String[] args) {
+		sendMail("982155420@qq.com","test javamailé‚®ä»¶");
 	}
 	
 }
