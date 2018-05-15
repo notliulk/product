@@ -11,6 +11,9 @@ import javax.mail.internet.MimeMessage;
 
 public class SendJMail {
 	
+	//邮件发送的smtp.163.com服务器地址，在内网的话，很可能需要配置制定的ip才可以，这样的话就要配置特定hosts来跳转。
+	//https://blog.csdn.net/xyw591238/article/details/69286638
+	
 		public static boolean sendMail(String email, String emailMsg) {
 		
 		String from = "17782271150@163.com"; 				// 邮件发送人的邮件地址
